@@ -1,5 +1,7 @@
 require('dotenv').config();
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -22,9 +24,23 @@ module.exports = {
   paths: {
     artifacts: './src/artifacts'
   },
+  defaultNetwork: "maticmum",
   networks: {
     hardhat: {
       chainId: +process.env.HARDHAT_CHAIN_ID || 1337
     },
+    sepolia: {
+      url: process.env.API_URL_SEPOLIA,
+      accounts: [`0x${process.env.PRIVATE_KEY}`]
+    },
+    maticmum: {
+      url: process.env.API_URL_MATICMUM,
+      accounts: [`0x${process.env.PRIVATE_KEY}`]
+    }
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: process.env.ETHERSCAN_API_KEY
   }
 };

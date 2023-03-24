@@ -55,7 +55,7 @@ export default function Home() {
         {
           <>
             <h1 className="text-3xl font-semibold text-center">
-              Web3Form <i>(aka &quot;Project Opossum&quot;)</i> v0.70
+              Web3Form <i>(aka &quot;Project Opossum&quot;)</i> v0.80
             </h1>
             <TotalSupply />
             <div className="space-y-8">
@@ -136,7 +136,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="text-blue-600 hover:text-blue-700 mb-8 inline-block"
         >
-          Check on Github
+          See the project on Github
         </a>
       </footer>
     </div>

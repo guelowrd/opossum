@@ -9,7 +9,6 @@ export async function mintNft(setMintLoading, setMintMessage, setMintError, data
   try {
     // Get wallet details
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // const provider = new ethers.providers.AlchemyProvider(network="sepolia", process.env.API_KEY);
     const signer = provider.getSigner()
 
     try {

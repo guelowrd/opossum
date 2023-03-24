@@ -18,7 +18,6 @@ export default function YourNFTs() {
         try {
             // Fetch data from contract
             const provider = new ethers.providers.Web3Provider(window.ethereum)
-            // const provider = new ethers.providers.AlchemyProvider(network="sepolia", process.env.API_KEY);
             const signer = provider.getSigner()
             const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
             const address = await signer.getAddress()
