@@ -1,5 +1,6 @@
-# Web3Form: Fill the Form & Mint an Opossum
-dApp to mint a non-transferrable NFTs, nicknamed Opossum, which is storing an SVG built from the answers to a form on the blockchain.
+# Web3Form: Fill the Form & Get an Opossum
+dApp to fill a form, generate an SVG from its answers and mint a non-transferrable NFTs to store it on the blockchain.
+The NFT (ERC-1155 standard) is nicknamed *`Opossum`* which stands for *`Original Proof Of Splendid SubMission`*.
 Built on Ethereum (Solidity) with Next.js (React) and TailwindCSS.
 
 ## Prerequisites
@@ -34,7 +35,7 @@ Minter deployed to: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
 
 ### Adding A Local Account To MetaMask
 Open your MetaMask browser extension and change the network to `Localhost 8545`.
-Next, import one of the accounts by adding its Private Key (for example, `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80` to MetaMask.
+Next, import one of the accounts by adding its Private Key (for example, `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`) to MetaMask.
 If you're successful, you should see the a balance resembling something like `10000 ETH` in the wallet.
 
 ### Connecting The Front-End

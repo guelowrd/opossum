@@ -131,12 +131,12 @@ export default function Home() {
 
       <footer className="mt-20 text-center">
         <a
-          href="https://github.com/guelowrd"
+          href="https://github.com/guelowrd/opossum"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 hover:text-blue-700 mb-8 inline-block"
         >
-          My Github
+          Check on Github
         </a>
       </footer>
     </div>
