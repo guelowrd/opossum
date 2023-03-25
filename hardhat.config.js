@@ -27,15 +27,11 @@ module.exports = {
   defaultNetwork: "maticmum",
   networks: {
     hardhat: {
-      chainId: +process.env.HARDHAT_CHAIN_ID || 1337
-    },
-    sepolia: {
-      url: process.env.API_URL_SEPOLIA,
-      accounts: [`0x${process.env.PRIVATE_KEY}`]
+      chainId: 1337
     },
     maticmum: {
       url: process.env.API_URL_MATICMUM,
-      accounts: [`0x${process.env.PRIVATE_KEY}`]
+      accounts: []
     }
   },
   etherscan: {
