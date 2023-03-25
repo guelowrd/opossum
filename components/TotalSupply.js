@@ -30,11 +30,8 @@ export default function TotalSupply() {
     async function getTotalSupply() {
         try {
             // Interact with contract
-            // const provider = new ethers.providers.Web3Provider(window.ethereum)
-            // const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
-            const provider = new ethers.providers.AlchemyProvider("maticmum", process.env.NEXT_PUBLIC_API_KEY);
-            const signer = new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY, provider);
-            const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer);
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
             const data = await contract.totalSupply()
             setTotalMinted(data.toNumber());
         } catch (error) {
@@ -46,11 +43,8 @@ export default function TotalSupply() {
     async function getTotalValue() {
         try {
             // Interact with contract
-            // const provider = new ethers.providers.Web3Provider(window.ethereum)
-            // const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
-            const provider = new ethers.providers.AlchemyProvider("maticmum", process.env.NEXT_PUBLIC_API_KEY);
-            const signer = new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY, provider);
-            const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer);
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
             const data = await contract.getBalance()
             setTotalValue(ethers.utils.formatEther(data).toString());
         } catch (error) {
@@ -62,7 +56,7 @@ export default function TotalSupply() {
         <>
             <p>
                 Tokens minted: {loading ? 'Loading...' : `${totalMinted}/${TOTAL}`}<br />
-                Contract value: {loading ? 'Loading...' : `${totalValue}ETH`}
+                Contract value: {loading ? 'Loading...' : `${totalValue} MATIC`}
             </p>
         </>
     )
