@@ -55,7 +55,7 @@ export default function Home() {
         {
           <>
             <h1 className="text-3xl font-semibold text-center">
-              Web3Form <i>(aka &quot;Project Opossum&quot;)</i> v0.80
+              Web3Form <i>(aka &quot;Project Opossum&quot;)</i> v0.81
             </h1>
             <TotalSupply />
             <div className="space-y-8">
