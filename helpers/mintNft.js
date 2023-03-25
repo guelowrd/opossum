@@ -1,4 +1,4 @@
-import { ethers, utils } from 'ethers'
+import { ethers } from 'ethers'
 import Minter from '../src/artifacts/contracts/Minter.sol/Minter.json'
 
 // Constants

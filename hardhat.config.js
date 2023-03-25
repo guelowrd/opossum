@@ -24,19 +24,19 @@ module.exports = {
   paths: {
     artifacts: './src/artifacts'
   },
-  defaultNetwork: "maticmum",
+  defaultNetwork: process.env.DEFAULT_NETWORK,
   networks: {
     hardhat: {
       chainId: 1337
     },
     maticmum: {
-      url: process.env.API_URL_MATICMUM,
+      url: process.env.API_URL_MATICMUM || "",
       accounts: []
     }
   },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
-    apiKey: process.env.ETHERSCAN_API_KEY
+    apiKey: process.env.ETHERSCAN_API_KEY || ""
   }
 };

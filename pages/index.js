@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useState, useRef } from 'react'
-import { ethers, utils } from 'ethers'
 import { hasEthereum } from '../utils/ethereum'
 import Wallet from '../components/Wallet'
 import YourNFTs from '../components/YourNFTs'

@@ -1,5 +1,5 @@
 import seedrandom from 'seedrandom'
-import { ethers, utils } from 'ethers'
+import { utils } from 'ethers'
 
 export function generateSvgUri(prettyInput, uglyInput) {
     let theHash = utils.keccak256(utils.toUtf8Bytes(uglyInput));

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ethers, utils } from 'ethers'
+import { ethers } from 'ethers'
 import { hasEthereum } from '../utils/ethereum'
 import Minter from '../src/artifacts/contracts/Minter.sol/Minter.json'
 
