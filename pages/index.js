@@ -43,7 +43,7 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-xl mt-36 mx-auto px-4">
+    <div className="flex flex-col max-w-xl mt-36 mx-auto px-4">
       <Head>
         <title>Opossum - Web3Form</title>
         <meta name="description" content="Web3Form aka Project Opossum" />
@@ -98,7 +98,7 @@ export default function Home() {
                       label="email"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Username</h3>
-                    <input className="w-full focus:border-blue-900"
+                    <input className="w-full"
                       value={values.username}
                       onChange={handleInputChange}
                       name="username"
@@ -128,16 +128,17 @@ export default function Home() {
         <YourNFTs />
       </main>
 
-      <footer className="mt-20 text-center">
+      {/* TODO: find a way to integrate footer dynamically below the Gallery
+      <footer className="mt-1000 text-center">
         <a
           href="https://github.com/guelowrd/opossum"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-700 mb-8 inline-block"
+          className="text-blue-600 hover:text-blue-700 mb-8"
         >
           See the project on Github
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }
