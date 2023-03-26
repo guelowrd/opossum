@@ -29,7 +29,7 @@ export default function YourNFTs() {
             for (let i = tokensOwned - 1; i >= 0; i--) {
                 const tokenId = await contract.tokenOfOwnerByIndex(address, i)
                 tokenIdsOwned.push(parseInt(tokenId))
-                const tokenData = await contract.uri(i)
+                const tokenData = await contract.uri(tokenId)
                 tokensIdAndData.push({
                     key: tokenId.toString(),
                     data: tokenData.toString(),
