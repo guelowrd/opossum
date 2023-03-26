@@ -46,12 +46,16 @@ contract Minter is ERC1155, Ownable {
         _tokenIdTracker.increment();
     }
 
-    function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data) public override onlyOwner {
+    function withdrawAll(address payable _to) public onlyOwner {
+        _to.transfer(address(this).balance);
+    }
+
+    function safeTransferFrom(address from, address to, uint256 id, uint256 amount, bytes memory data) public override {
         require(false, "You cannot transfer your Opossum.");
         super.safeTransferFrom(from, to, id, amount, data);
     }
 
-    function safeBatchTransferFrom(address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data) public override onlyOwner {
+    function safeBatchTransferFrom(address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data) public override {
         require(false, "You cannot transfer your Opossums.");
         super.safeBatchTransferFrom(from, to, ids, amounts, data);
     }

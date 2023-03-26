@@ -31,11 +31,18 @@ module.exports = {
     maticmum: {
       url: process.env.NEXT_PUBLIC_API_URL_MATICMUM || "",
       accounts: [`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY || ""}`]
+    },
+    matic: {
+      url: process.env.NEXT_PUBLIC_API_URL_MATIC || "",
+      accounts: [`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY || ""}`]
     }
   },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
-    apiKey: process.env.ETHERSCAN_API_KEY || ""
+    apiKey: {
+      polygonMumbai: process.env.ETHERSCAN_API_KEY || "",
+      polygon: process.env.ETHERSCAN_API_KEY || ""
+    }
   }
 };
