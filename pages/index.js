@@ -63,42 +63,42 @@ export default function Home() {
                   <h2 className="text-2xl font-semibold mb-2">Fill the form</h2>
                   <div><form>
                     <h3 className="text-base font-normal mb-1">First name</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.fname}
                       onChange={handleInputChange}
                       name="fname"
                       label="fname"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Last name</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.lname}
                       onChange={handleInputChange}
                       name="lname"
                       label="lname"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Country</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.country}
                       onChange={handleInputChange}
                       name="country"
                       label="country"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Phone</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.phone}
                       onChange={handleInputChange}
                       name="phone"
                       label="phone"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Mail</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.email}
                       onChange={handleInputChange}
                       name="email"
                       label="email"
                     />
                     <h3 className="text-base font-normal mb-1 mt-2">Username</h3>
-                    <input className="w-full"
+                    <input className="w-full focus:border-blue-900"
                       value={values.username}
                       onChange={handleInputChange}
                       name="username"

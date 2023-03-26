@@ -1,5 +1,4 @@
 require('dotenv').config();
-require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 
@@ -24,14 +23,14 @@ module.exports = {
   paths: {
     artifacts: './src/artifacts'
   },
-  defaultNetwork: process.env.DEFAULT_NETWORK,
+  defaultNetwork: process.env.NEXT_PUBLIC_DEFAULT_NETWORK,
   networks: {
     hardhat: {
       chainId: 1337
     },
     maticmum: {
-      url: process.env.API_URL_MATICMUM || "",
-      accounts: []
+      url: process.env.NEXT_PUBLIC_API_URL_MATICMUM || "",
+      accounts: [`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY || ""}`]
     }
   },
   etherscan: {
