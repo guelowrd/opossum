@@ -35,7 +35,11 @@ module.exports = {
     matic: {
       url: process.env.NEXT_PUBLIC_API_URL_MATIC || "",
       accounts: [`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY || ""}`]
-    }
+    },
+    scrollAlpha: {
+      url: process.env.NEXT_PUBLIC_API_URL_SCROLL || "",
+      accounts: [`0x${process.env.NEXT_PUBLIC_PRIVATE_KEY || ""}`]
+    }    
   },
   etherscan: {
     // Your API key for Etherscan
