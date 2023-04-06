@@ -70,7 +70,7 @@ export default function TotalSupply() {
         <>
             <p>
                 Tokens minted: {loading ? 'Loading...' : `${totalMinted}/${TOTAL}`}<br />
-                Contract value: {loading ? 'Loading...' : `${totalValue} MATIC`}
+                Contract value: {loading ? 'Loading...' : `${totalValue} ${process.env.NEXT_PUBLIC_DEFAULT_NETWORK == 'matic' ? "MATIC" : "ETH"}`}
             </p>
         </>
     )
