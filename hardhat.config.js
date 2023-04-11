@@ -46,7 +46,18 @@ module.exports = {
     // Obtain one at https://etherscan.io/
     apiKey: {
       polygonMumbai: process.env.ETHERSCAN_API_KEY || "",
-      polygon: process.env.ETHERSCAN_API_KEY || ""
-    }
+      polygon: process.env.ETHERSCAN_API_KEY || "",
+      scrollAlpha: "dummy_key_is_fine" 
+    },
+    customChains: [
+      {
+        network: 'scrollAlpha',
+        chainId: 534353,
+        urls: {
+          apiURL: 'https://blockscout.scroll.io/api',
+          browserURL: 'https://blockscout.scroll.io/',
+        },
+      },
+    ],
   }
 };
