@@ -4,6 +4,7 @@ const chai = require('chai')
 chai.use(require('chai-as-promised')).should()
 
 describe("Minter", function () {
+  this.timeout(60000);
   let contract;
   const mintedData = "someDataToMint"
   beforeEach(async () => {
@@ -57,14 +58,14 @@ describe("Minter", function () {
     it('fetches data as expected - ownerBalance(address)', async function () {
       // Request ownerBalance(address) from contract.
       const balanceAlice = await contract.ownerBalance(alice.address)
-      expect(balanceAlice).to.equal(1)
+      expect(Number(balanceAlice)).to.equal(1)
       const balanceBob = await contract.ownerBalance(bob.address)
-      expect(balanceBob).to.equal(0)
+      expect(Number(balanceBob)).to.equal(0)
     })
     it('fetches data as expected - tokenOfOwnerByIndex(address, index)', async function () {
       // Request uri from contract.
       const tokenId = await contract.tokenOfOwnerByIndex(alice.address, 0)
-      expect(tokenId).to.equal(0)
+      expect(Number(tokenId)).to.equal(0)
     })
     it('data fetch failing as expected - tokenOfOwnerByIndex(address, index)', async function () {
       // Request uri from contract.
@@ -87,5 +88,21 @@ describe("Minter", function () {
       await contract.connect(alice).safeBatchTransferFrom(alice.address, bob.address, [0, 1], [1, 1], "").should.be.rejected
     })
   })
+  describe('burning', async function () {
+    let owner, alice
+    beforeEach(async () => {
+      [owner, alice] = await ethers.getSigners();
+      await contract.connect(alice).mint(mintedData, { value: ethers.utils.parseEther("0.0123") })
+      await contract.connect(alice).mint(mintedData, { value: ethers.utils.parseEther("0.0123") })
+    })
+    it('burn works as expected - burn(from, id, 1)', async function () {
+      // Call burn for first id and ofc 1 token, then check balance went from 2 to 1.
+      let balanceAlice = await contract.ownerBalance(alice.address)
+      expect(Number(balanceAlice)).to.equal(2)
+      await contract.connect(alice).burn(alice.address, 0, 1)
+      balanceAlice = await contract.ownerBalance(alice.address)
+      expect(Number(balanceAlice)).to.equal(1)
+    })
+  })  
 })
 

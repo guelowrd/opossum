@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { hasEthereum } from '../utils/ethereum'
 import Wallet from '../components/Wallet'
 import YourNFTs from '../components/YourNFTs'
@@ -31,7 +31,7 @@ export default function Home() {
 
   // Generate an URI for a random SVG image based on the forms inputs 
   const getSvgUri = () => {
-    let theData = [values.fname, values.lname, values.username].filter(Boolean).join('|');
+    let theData = [values.fname, values.lname, values.username].join('|');
     return generateSvgUri(theData);
   }
 

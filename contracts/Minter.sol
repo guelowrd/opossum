@@ -2,11 +2,12 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract Minter is ERC1155, Ownable {
+contract Minter is ERC1155, ERC1155Burnable, Ownable {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
 
@@ -42,7 +43,7 @@ contract Minter is ERC1155, Ownable {
         // Mint token.
         _mint(_msgSender(), tokenId, 1, "");
         // Update tracking variables.
-        totalMinted = _tokenIdTracker.current() + 1;
+        totalMinted++;
         _tokenIdTracker.increment();
     }
 
@@ -59,7 +60,22 @@ contract Minter is ERC1155, Ownable {
         require(false, "You cannot transfer your Opossums.");
         super.safeBatchTransferFrom(from, to, ids, amounts, data);
     }
-    
+
+    function burn(address account, uint256 id, uint256 value) public override {
+        super.burn(account, id, value);
+        delete tokenid_creator[id];
+        delete tokenid_data[id];
+        uint256 nbTokens = creator_tokenids[account].length;
+        for (uint256 i=0; i<nbTokens ;i++){
+            if (creator_tokenids[account][i] == id) {
+                creator_tokenids[account][i] = creator_tokenids[account][nbTokens-1];
+                creator_tokenids[account].pop(); //we don't care about sorting
+                totalMinted--;
+                break;
+            }
+        }
+    }
+
     function totalSupply() public view returns (uint256) {
         return totalMinted;
     }
