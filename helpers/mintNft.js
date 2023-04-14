@@ -17,7 +17,6 @@ export async function mintNft(setMintLoading, setMintMessage, setMintError, data
       // Interact with contract
       const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer)
       const totalPrice = MINT_PRICE
-      console.log(dataToMint)
       const transaction = await contract.mint(dataToMint, { value: ethers.utils.parseEther(totalPrice.toString()) })
       await transaction.wait()
       setMintMessage(`Congrats, you minted an Opossum! Check it out in the gallery below.`)

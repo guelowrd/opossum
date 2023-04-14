@@ -22,16 +22,17 @@ export default function Home() {
   const [svgUri, setSvgUri] = useState(initSvg);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues({
+    const newVals = {
       ...values,
       [name]: value,
-    });
-    setSvgUri(getSvgUri());
+    };
+    setValues(newVals);
+    setSvgUri(getSvgUri(newVals));
   };
 
   // Generate an URI for a random SVG image based on the forms inputs 
-  const getSvgUri = () => {
-    let theData = [values.fname, values.lname, values.username].join('|');
+  const getSvgUri = (formValues) => {
+    let theData = [formValues.fname, formValues.lname, formValues.username].join('|');
     return generateSvgUri(theData);
   }
 

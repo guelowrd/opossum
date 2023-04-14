@@ -65,7 +65,6 @@ export default function YourNFTs() {
                     data: tokenData.toString(),
                     owned: true
                 })
-
             }
             // Get amount of tokens ever minted
             const tokensMinted = await contract.totalSupply()
