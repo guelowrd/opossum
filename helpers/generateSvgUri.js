@@ -69,11 +69,16 @@ export function generateSvgUri(uglyInput) {
         let points = normPoints(originalPoints, scale);
         let controlPoints = normPoints(originalPoints, scale*1.1);
         const last = points.length - 1;
+        const midway = (points.length - 1)/2;
         let result = "M " + points[0].join(' ');
         for (let p = 1; p < 5; p += 2) {
             result += " Q " + [points[p].join(' '), points[p + 1].join(' ')].join(' ');
         }
-        for (let p = 5; p < last - 5; p += 2) {
+        for (let p = 5; p < midway; p += 2) {
+            result += " Q " + [controlPoints[p].join(' '), points[p + 1].join(' ')].join(' ');
+        }
+        result += " Q " + [points[midway].join(' '), points[midway].join(' ')].join(' ');
+        for (let p = midway + 1; p < last - 5; p += 2) {
             result += " Q " + [controlPoints[p].join(' '), points[p + 1].join(' ')].join(' ');
         }
         for (let p = last - 5; p < last; p += 2) {
@@ -98,11 +103,9 @@ export function generateSvgUri(uglyInput) {
         + '<defs><' + gradientParam + ' id="Gradient"><stop offset="0%" stop-color="hsl(' + hParam1 + ', ' + sParam1 + '%, ' + lParam1 + '%)" />'
         + '<stop offset="100%" stop-color="hsl(' + hParam2 + ', ' + sParam2 + '%, ' + lParam2 + '%)" /></' + gradientParam + ' ></defs>'
         + txtAsBackground
-        + '<text x="50%" y="51%" font-size="120px" opacity="0.88" dominant-baseline="central" text-anchor="middle" >&#128220;</text>'
-        + '<path d="' + curveFromPoints(points, 0.67) + '" fill="url(#Gradient)" opacity="0.6" />' //stroke-width="1" stroke="url(#Gradient)
-        + '<path d="' + curveFromPoints(points, 0.66) + '" fill="url(#Gradient)" opacity="0.65" />' 
-        + '<path d="' + curveFromPoints(points, 0.64) + '" fill="url(#Gradient)" opacity="0.7" />' 
-        + '<path d="' + curveFromPoints(points, 0.61) + '" fill="url(#Gradient)" opacity="0.75" /></svg>';
+        + '<text x="50%" y="51%" font-size="120px" opacity="0.9" dominant-baseline="central" text-anchor="middle" >&#128220;</text>'
+        + '<path d="' + curveFromPoints(points, 0.65) + '" fill="url(#Gradient)" opacity="0.99" />'
+        + '</svg>';
     imgCode = imgCode.split('"').join("'");
     let encodedCode = Buffer.from(imgCode, 'binary').toString('base64');
     return "data:image/svg+xml;base64," + encodedCode;
@@ -110,7 +113,7 @@ export function generateSvgUri(uglyInput) {
 
 export function generateInitialSvgUri() {
     let imgCode = '<svg viewBox="0 0 142 142" version="1.1" xmlns="http://www.w3.org/2000/svg">'
-        + '<text x="50%" y="51%" font-size="120px" opacity="0.88" dominant-baseline="central" text-anchor="middle" >&#128220;</text>'
+        + '<text x="50%" y="51%" font-size="120px" opacity="0.9" dominant-baseline="central" text-anchor="middle" >&#128220;</text>'
         + '</svg>';
     imgCode = imgCode.split('"').join("'");
     let encodedCode = Buffer.from(imgCode, 'binary').toString('base64');

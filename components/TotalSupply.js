@@ -34,7 +34,7 @@ export default function TotalSupply() {
             const isNetworkMaticmum = false && process.env.NEXT_PUBLIC_DEFAULT_NETWORK == 'maticmum';
             const provider = isNetworkMaticmum ?
                 new ethers.providers.AlchemyProvider('maticmum', process.env.NEXT_PUBLIC_API_KEY) :
-                new ethers.providers.Web3Provider(window.ethereum)
+                new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_API_URL);
             const signer = isNetworkMaticmum ?
                 new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY, provider) :
                 "";
@@ -54,7 +54,7 @@ export default function TotalSupply() {
             const isNetworkMaticmum = false && process.env.NEXT_PUBLIC_DEFAULT_NETWORK == 'maticmum';
             const provider = isNetworkMaticmum ?
                 new ethers.providers.AlchemyProvider('maticmum', process.env.NEXT_PUBLIC_API_KEY) :
-                new ethers.providers.Web3Provider(window.ethereum)
+                new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_API_URL);
             const signer = isNetworkMaticmum ?
                 new ethers.Wallet(process.env.NEXT_PUBLIC_PRIVATE_KEY, provider) :
                 "";
@@ -70,7 +70,7 @@ export default function TotalSupply() {
         <>
             <p>
                 Tokens minted: {loading ? 'Loading...' : `${totalMinted}/${TOTAL}`}<br />
-                Contract value: {loading ? 'Loading...' : `${totalValue} ${process.env.NEXT_PUBLIC_DEFAULT_NETWORK == 'matic' ? "MATIC" : "ETH"}`}
+                Contract value: {loading ? 'Loading...' : `${totalValue} ${process.env.NEXT_PUBLIC_DEFAULT_NETWORK == 'matic' ? "MATIC" : "testETH"}`}
             </p>
         </>
     )

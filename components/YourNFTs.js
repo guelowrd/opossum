@@ -6,10 +6,40 @@ import Minter from '../src/artifacts/contracts/Minter.sol/Minter.json'
 export default function YourNFTs() {
     // UI state
     const [nfts, setNfts] = useState([])
+    const [connected, setConnected] = useState(false)
 
     useEffect(function () {
         getNftsOfCurrentWallet()
+        if (!connected) {
+            getAllNfts()
+        }
     });
+
+    // Get all NFTs ever minted
+    async function getAllNfts() {
+        if (!hasEthereum()) return
+
+        try {
+            // Fetch data from contract
+            const provider = new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_API_URL)
+            const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
+            const tokensIdAndData = []
+            // Get amount of tokens ever minted
+            const tokensMinted = await contract.totalSupply()
+            // For all token ever minted, get the tokenId & data & check if owned by this address
+            for (let i = tokensMinted - 1; i >= 0; i--) {
+                const tokenData = await contract.uri(i)
+                tokensIdAndData.push({
+                    key: i.toString(),
+                    data: tokenData.toString(),
+                    owned: false
+                })
+            }
+            setNfts(tokensIdAndData)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // Get NFTs owned by current wallet
     async function getNftsOfCurrentWallet() {
@@ -21,7 +51,7 @@ export default function YourNFTs() {
             const signer = provider.getSigner()
             const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, provider)
             const address = await signer.getAddress()
-            const tokensIdAndData = []
+            const tokensIdAndData = [];
             // Get amount of tokens owned by this address
             const tokensOwned = await contract.ownerBalance(address)
             // For each token owned, get the tokenId
@@ -52,7 +82,9 @@ export default function YourNFTs() {
                 })
             }
             setNfts(tokensIdAndData)
+            setConnected(true);
         } catch (error) {
+            setConnected(false);
             console.log(error)
         }
     }

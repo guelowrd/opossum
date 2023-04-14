@@ -15,7 +15,7 @@ export default function Home() {
   const initialValues = {
     fname: "",
     lname: "",
-    username: " ",
+    username: "",
   };
   const [values, setValues] = useState(initialValues);
   const initSvg = generateInitialSvgUri();
@@ -52,31 +52,23 @@ export default function Home() {
       <main className="space-y-8">
         {
           <>
-            <h1 className="text-3xl font-semibold text-center">
-              Web3Form <i>(aka &quot;Project Opossum&quot;)</i> v0.82
+            <h1 className="text-3xl font-semibold text-center mt-10">
+              Web3Form <i>(aka &quot;Project Opossum&quot;)</i>      
             </h1>
-            <a
-              href="https://github.com/guelowrd/opossum"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-700 text-right"
-            >
-              See the project on Github
-            </a>
             <TotalSupply />
             <div className="space-y-8">
               <div className="rounded-xl shadow-lg bg-gray-100 p-4 lg:p-8">
                 <div>
                   <h2 className="text-2xl font-semibold mb-2">Fill the form</h2>
                   <div><form>
-                    <h3 className="text-base font-normal mb-1">First name</h3>
+                    <h3 className="text-base font-normal mb-1">How to you feel about Scroll?</h3>
                     <input className="w-full focus:border-blue-900"
                       value={values.fname}
                       onChange={handleInputChange}
                       name="fname"
                       label="fname"
                     />
-                    <h3 className="text-base font-normal mb-1 mt-2">Last name</h3>
+                    <h3 className="text-base font-normal mb-1 mt-2">Really? Tell me more...</h3>
                     <input className="w-full focus:border-blue-900"
                       value={values.lname}
                       onChange={handleInputChange}
@@ -94,7 +86,7 @@ export default function Home() {
                   </div>
                   <div className="preview text-gray-600 text-sm mb-4 mt-6 justify-center items-center">
                     <h2 className="text-2xl font-semibold mb-2">Opossum Preview</h2>
-                    <i>(OPOSSuM = <u>O</u>riginal <u>P</u>roof <u>O</u>f <u>S</u>plendid <u>Su</u>b<u>M</u>ission)</i>
+                    <i>(OPOSSuM = <u>O</u>riginal <u>P</u>roof <u>O</u>f <u>S</u>croll <u>Su</u>b<u>M</u>ission)</i>
                     <img alt="Opossum Preview" className="rounded-xl border-4 border-white bg-gray-100 mb-2 mt-4" src={svgUri} />
                   </div>
                   <div className="flex">
@@ -116,7 +108,14 @@ export default function Home() {
 
       {/* TODO: find a way to integrate footer dynamically below the Gallery */}
       {/* <footer className="mt-auto text-center">
-
+            <a
+              href="https://github.com/guelowrd/opossum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-700 text-right m-5"
+            >
+              See the project on Github
+            </a>
       </footer> */}
     </div>
   )
